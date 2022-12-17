@@ -57,6 +57,5 @@ public class Appium02 {
         System.out.println("Test Screen Acildi");
 
         driver.closeApp();
-        //driver.quit();
     }
 }

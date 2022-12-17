@@ -19,11 +19,6 @@ public class Appium01 {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        /*
-        adb shell
-        dumpsys window | grep -E "mCurrentFocus"
-         */
-
        /*
         capabilities.setCapability(CapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability("platformName", "Android");
@@ -38,8 +33,6 @@ public class Appium01 {
          * adb shell
          * dumpsys window | grep -E "mCurrentFocus"
          */
-
-        // app yukleme
         capabilities.setCapability("appPackage", "com.davemac327.gesture.tool");
         capabilities.setCapability("appActivity", "com.davemac327.gesture.tool.GestureBuilderActivity");
 
