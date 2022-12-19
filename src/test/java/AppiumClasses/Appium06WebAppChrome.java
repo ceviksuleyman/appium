@@ -6,30 +6,15 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utilities.ReusableMethods;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.Set;
 
 import static utilities.ReusableMethods.threadSleep;
 
+public class Appium06WebAppChrome {
 
-public class Appium05NativeChrome {
-
-
-    /*
-    {
-  "platformName": "Android",
-  "platformVersion": "12.0",
-  "automationName": "UiAutomator2",
-  "appPackage": "com.android.chrome",
-  "appActivity": "com.google.android.apps.chrome.Main",
-  "deviceName": "emulator-5554",
-  "noReset": true
-}
-     */
 
     @Test
     public void test() throws MalformedURLException {
@@ -40,30 +25,34 @@ public class Appium05NativeChrome {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
-        capabilities.setCapability("appPackage", "com.android.chrome");
-        capabilities.setCapability("appActivity", "com.google.android.apps.chrome.Main");
-        capabilities.setCapability("noReset", true);
-
-
+        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
+        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "60000");
+        //capabilities.setCapability("noReset", true);
         AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         threadSleep(3);
+
+
+        /**
+         * chrome://inspect/#devices
+         */
+
 
         driver.get("https://www.amazon.com");
         threadSleep(15);
 
         System.out.println(driver.getContext() + " app acildiginda tur");
 
-        /*Set<String> contextNames = driver.getContextHandles();
+        Set<String> contextNames = driver.getContextHandles();
         for (String w : contextNames) {
 
             System.out.println(w);
-            if (w.contains("WEBVIEW_chrome")){
+            if (w.contains("WEBVIEW_chrome")) {
                 threadSleep(3);
                 driver.context(w);
             }
         }
         System.out.println(driver.getContext() + " app degisimden sonra tur");
-        threadSleep(3);*/
+        threadSleep(3);
 
 
         MobileElement homeScreenLogo = driver.findElementByAccessibilityId("Amazon");
@@ -77,3 +66,4 @@ public class Appium05NativeChrome {
         driver.closeApp();
     }
 }
+
