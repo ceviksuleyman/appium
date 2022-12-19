@@ -18,12 +18,14 @@ public class Appium04 {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13.0");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
         capabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\cevik\\IdeaProjects\\mobileTesting\\src\\Apps\\Calculator.apk");
         capabilities.setCapability("noReset", true);
 
+
+        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         /*
         {
   "automationName": "UiAutomator2",
@@ -34,7 +36,7 @@ public class Appium04 {
 }
          */
 
-        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
 
         MobileElement num1 = driver.findElementById("com.google.android.calculator:id/digit_1");
         MobileElement num2 = driver.findElementById("com.google.android.calculator:id/digit_2");
@@ -56,13 +58,11 @@ public class Appium04 {
 
         MobileElement equals = driver.findElementByAccessibilityId("equals");
 
-        // 64 + 32
-
-        num6.click();
-        num4.click();
+        num9.click();
+        num5.click();
         plus.click();
-        num3.click();
-        num2.click();
+        num7.click();
+        num8.click();
 
         Thread.sleep(2000);
 

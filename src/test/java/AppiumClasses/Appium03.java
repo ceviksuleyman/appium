@@ -20,7 +20,7 @@ public class Appium03 {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13.0");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
         capabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\cevik\\IdeaProjects\\mobileTesting\\src\\Apps\\gestureTool.apk");
@@ -43,9 +43,9 @@ public class Appium03 {
 
 
         MobileElement gestureNameBox = driver.findElementById("com.davemac327.gesture.tool:id/gesture_name");
-        gestureNameBox.sendKeys("appium", Keys.ENTER);
+        gestureNameBox.sendKeys("Bilemiyorum altan", Keys.ENTER);
 
-        Thread.sleep(2000);
+        Thread.sleep(5000);
 
 
         driver.closeApp();
