@@ -27,42 +27,51 @@ public class Appium06WebAppChrome {
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
         capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
         capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "60000");
-        //capabilities.setCapability("noReset", true);
+
+        capabilities.setCapability("chromedriverExecutable", "C:\\Users\\cevik\\IdeaProjects\\mobileTesting\\src\\driver\\chromedriver.exe");
+
         AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         threadSleep(3);
-
-
+        //capabilities.setCapability("noReset", true);
+        /*
+        chrome driver versiyonunu indirme
+         */
         /**
          * chrome://inspect/#devices
          */
 
-
         driver.get("https://www.amazon.com");
-        threadSleep(15);
+        threadSleep(3);
 
         System.out.println(driver.getContext() + " app acildiginda tur");
 
-        Set<String> contextNames = driver.getContextHandles();
+        Set<String> contextNames = driver.getContextHandles(); // all context
         for (String w : contextNames) {
 
             System.out.println(w);
             if (w.contains("WEBVIEW_chrome")) {
+
                 threadSleep(3);
                 driver.context(w);
             }
         }
         System.out.println(driver.getContext() + " app degisimden sonra tur");
+
+
+        MobileElement logo = driver.findElementByXPath("//a[@id=\"nav-logo-sprites\"]/span[1]");
+        Assert.assertTrue(logo.isDisplayed());
+        threadSleep(3);
+
+        MobileElement signIn = driver.findElementByXPath("//a[@id=\"nav-logobar-greeting\"]");
+        signIn.click();
         threadSleep(3);
 
 
-        MobileElement homeScreenLogo = driver.findElementByAccessibilityId("Amazon");
-        Assert.assertTrue(homeScreenLogo.isDisplayed());
+        MobileElement signInPageTitle = driver.findElementByXPath("//div[@id=\"outer-accordion-signin-signup-page\"]/h2");
+        Assert.assertTrue(signInPageTitle.isDisplayed());
         threadSleep(3);
 
-        driver.findElementByXPath("//android.view.View[@content-desc=\"Sign in ›\"]/android.widget.TextView").click();
 
-
-        threadSleep(3);
         driver.closeApp();
     }
 }
