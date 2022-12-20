@@ -40,7 +40,7 @@ public class Appium06WebAppChrome {
          * chrome://inspect/#devices
          */
 
-        driver.get("https://www.amazon.com");
+        driver.get("https://www.automationexercise.com/");
         threadSleep(3);
 
         System.out.println(driver.getContext() + " app acildiginda tur");
@@ -58,18 +58,15 @@ public class Appium06WebAppChrome {
         System.out.println(driver.getContext() + " app degisimden sonra tur");
 
 
-        MobileElement logo = driver.findElementByXPath("//a[@id=\"nav-logo-sprites\"]/span[1]");
-        Assert.assertTrue(logo.isDisplayed());
-        threadSleep(3);
-
-        MobileElement signIn = driver.findElementByXPath("//a[@id=\"nav-logobar-greeting\"]");
-        signIn.click();
-        threadSleep(3);
-
-
-        MobileElement signInPageTitle = driver.findElementByXPath("//div[@id=\"outer-accordion-signin-signup-page\"]/h2");
-        Assert.assertTrue(signInPageTitle.isDisplayed());
-        threadSleep(3);
+        //MobileElement logo = driver.findElementByXPath("//a[@id=\"nav-logo-sprites\"]/span[1]");
+        //Assert.assertTrue(logo.isDisplayed());
+        //threadSleep(3);
+        //MobileElement signIn = driver.findElementByXPath("//a[@id=\"nav-logobar-greeting\"]");
+        //signIn.click();
+        //threadSleep(5);
+        //MobileElement signInPageTitle = driver.findElementByXPath("//div[@id=\"outer-accordion-signin-signup-page\"]/h2");
+        //Assert.assertTrue(signInPageTitle.isDisplayed());
+        //threadSleep(3);
 
 
         driver.closeApp();

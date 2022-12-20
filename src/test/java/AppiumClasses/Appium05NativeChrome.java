@@ -46,24 +46,12 @@ public class Appium05NativeChrome {
 
 
         AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        threadSleep(3);
+        threadSleep(5);
 
         driver.get("https://www.amazon.com");
-        threadSleep(15);
+        threadSleep(5);
 
         System.out.println(driver.getContext() + " app acildiginda tur");
-
-        /*Set<String> contextNames = driver.getContextHandles();
-        for (String w : contextNames) {
-
-            System.out.println(w);
-            if (w.contains("WEBVIEW_chrome")){
-                threadSleep(3);
-                driver.context(w);
-            }
-        }
-        System.out.println(driver.getContext() + " app degisimden sonra tur");
-        threadSleep(3);*/
 
 
         MobileElement homeScreenLogo = driver.findElementByAccessibilityId("Amazon");
