@@ -3,15 +3,12 @@ package AppiumClasses;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 import utilities.ReusableMethods;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import static utilities.ReusableMethods.threadSleep;
 
 public class Appium07UiSelector {
 
@@ -31,7 +28,7 @@ public class Appium07UiSelector {
 
 
         AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
 
         // resourceId
         //driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/addButton\")").click();
@@ -45,14 +42,14 @@ public class Appium07UiSelector {
 
 
         driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").textStartsWith(\"Add\")").click();
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
 
 
         System.out.println(driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(false)").getAttribute("enabled"));
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
 
 
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
 
         driver.closeApp();
     }

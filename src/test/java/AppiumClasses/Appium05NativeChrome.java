@@ -10,10 +10,6 @@ import utilities.ReusableMethods;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
-import java.util.Set;
-
-import static utilities.ReusableMethods.threadSleep;
 
 
 public class Appium05NativeChrome {
@@ -46,22 +42,22 @@ public class Appium05NativeChrome {
 
 
         AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        threadSleep(5);
+        ReusableMethods.waitFor(5);
 
         driver.get("https://www.amazon.com");
-        threadSleep(5);
+        ReusableMethods.waitFor(5);
 
         System.out.println(driver.getContext() + " app acildiginda tur");
 
 
         MobileElement homeScreenLogo = driver.findElementByAccessibilityId("Amazon");
         Assert.assertTrue(homeScreenLogo.isDisplayed());
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
 
         driver.findElementByXPath("//android.view.View[@content-desc=\"Sign in ›\"]/android.widget.TextView").click();
 
 
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
         driver.closeApp();
     }
 }

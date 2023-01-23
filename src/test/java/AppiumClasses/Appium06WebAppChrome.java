@@ -4,14 +4,12 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import utilities.ReusableMethods;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Set;
-
-import static utilities.ReusableMethods.threadSleep;
 
 public class Appium06WebAppChrome {
 
@@ -30,7 +28,7 @@ public class Appium06WebAppChrome {
         capabilities.setCapability("chromedriverExecutable", "C:\\Users\\cevik\\IdeaProjects\\mobileTesting\\src\\driver\\chromedriver.exe");
 
         AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
         //capabilities.setCapability("noReset", true);
         /*
         chrome driver versiyonunu indirme
@@ -40,7 +38,7 @@ public class Appium06WebAppChrome {
          */
 
         driver.get("https://www.automationexercise.com/");
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
 
         System.out.println(driver.getContext() + " app acildiginda tur");
 
@@ -50,7 +48,7 @@ public class Appium06WebAppChrome {
             System.out.println(w);
             if (w.contains("WEBVIEW_chrome")) {
 
-                threadSleep(3);
+                ReusableMethods.waitFor(3);
                 driver.context(w);
             }
         }

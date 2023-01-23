@@ -1,16 +1,17 @@
 package AppiumClasses;
 
+
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utilities.ReusableMethods;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static utilities.ReusableMethods.threadSleep;
 
 public class Appium09 {
 
@@ -27,19 +28,21 @@ public class Appium09 {
         //capabilities.setCapability("appActivity", "com.touchboarder.androidapidemos.MainActivity");
         capabilities.setCapability("noReset", true);
         AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        threadSleep(2);
-        //AndroidDriver driver = getAndroidDriver();
+        ReusableMethods.waitFor(3);
+        System.out.println("App Installed...");
 
-        System.out.println("App intstalled...");
+
         //api demos butonuna tikla
         driver.findElementByXPath("//android.widget.TextView[@text='API Demos']").click();
-        threadSleep(2);
+        ReusableMethods.waitFor(2);
+
 
         //preference butonuna tikladik
         driver.findElementByXPath("//android.widget.TextView[@text='Preference']").click();
 
+
         //preference dependencies butonuna bastik
-        threadSleep(2);
+        ReusableMethods.waitFor(2);
         driver.findElementByXPath("//android.widget.TextView[@text='3. Preference dependencies']").click();
 
 
@@ -47,17 +50,17 @@ public class Appium09 {
         /*
         Kosul koymazsak tekrar calistirmalarda hata verir ! Appium10 da duzelttik
          */
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
         driver.findElementById("android:id/checkbox").click();
 
 
         //wifi setting tikladik
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
         driver.findElementByXPath("//android.widget.TextView[@text='WiFi settings']").click();
 
 
         //text penceresi acildigini gorduk
-        threadSleep(3);
+        ReusableMethods.waitFor(3);
         Assert.assertTrue(driver.findElementById("android:id/alertTitle").isDisplayed());
 
         //text yazdiralim
@@ -69,7 +72,7 @@ public class Appium09 {
 
         System.out.println("mission completed....");
 
-        threadSleep(2);
+        ReusableMethods.waitFor(2);
 
 
         //session kapat

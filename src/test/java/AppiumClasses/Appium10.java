@@ -1,44 +1,43 @@
 package AppiumClasses;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utilities.BaseClass;
+
 
 import java.net.MalformedURLException;
-import java.net.URL;
 
-import static utilities.ReusableMethods.threadSleep;
+import static utilities.ReusableMethods.waitFor;
 
-public class Appium10 {
+public class Appium10 extends BaseClass {
 
     @Test
     public void test() throws MalformedURLException {
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+        /*DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
         capabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\cevik\\IdeaProjects\\mobileTesting\\src\\Apps\\apiDemos.apk");
         capabilities.setCapability("noReset", true);
-
         AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        threadSleep(3);
-        System.out.println("App intstalled...");
+        waitFor(3);*/
+
+        AndroidDriver driver = getAndroidDriver();  // extends BaseClass
+        System.out.println("App Installed...");
 
 
         //api demos butonuna tikla
         driver.findElementByXPath("//android.widget.TextView[@text='API Demos']").click();
-        threadSleep(3);
+        waitFor(3);
 
         //preference butonuna tikladik
         driver.findElementByXPath("//android.widget.TextView[@text='Preference']").click();
 
         //preference dependencies butonuna bastik
-        threadSleep(3);
+        waitFor(3);
         driver.findElementByXPath("//android.widget.TextView[@text='3. Preference dependencies']").click();
 
         // checkbox control click
@@ -54,24 +53,24 @@ public class Appium10 {
         }
 
         // wifi setting tikladik
-        threadSleep(3);
+        waitFor(3);
         driver.findElementByXPath("//android.widget.TextView[@text='WiFi settings']").click();
 
         // text penceresi acildigini gorduk
-        threadSleep(3);
+        waitFor(3);
         Assert.assertTrue(driver.findElementById("android:id/alertTitle").isDisplayed());
-        threadSleep(1);
+        waitFor(1);
 
         // text yazdiralim
         driver.findElementById("android:id/edit").sendKeys("TextAppium");
-        threadSleep(1);
+        waitFor(1);
 
         // ok butonuna bas
         driver.findElementById("android:id/button1").click();
-        threadSleep(1);
+        waitFor(1);
 
         System.out.println("mission completed....");
-        threadSleep(2);
+        waitFor(2);
 
         // session kapat
         driver.closeApp();
