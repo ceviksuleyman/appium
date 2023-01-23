@@ -12,7 +12,7 @@ import java.net.URL;
 
 import static utilities.ReusableMethods.threadSleep;
 
-public class Appium09 {
+public class Appium10 {
 
     @Test
     public void test() throws MalformedURLException {
@@ -23,56 +23,57 @@ public class Appium09 {
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
         capabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\cevik\\IdeaProjects\\mobileTesting\\src\\Apps\\apiDemos.apk");
-        //capabilities.setCapability("appPackage", "com.touchboarder.android.api.demos");
-        //capabilities.setCapability("appActivity", "com.touchboarder.androidapidemos.MainActivity");
         capabilities.setCapability("noReset", true);
-        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        threadSleep(2);
-        //AndroidDriver driver = getAndroidDriver();
 
+        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        threadSleep(3);
         System.out.println("App intstalled...");
+
+
         //api demos butonuna tikla
         driver.findElementByXPath("//android.widget.TextView[@text='API Demos']").click();
-        threadSleep(2);
+        threadSleep(3);
 
         //preference butonuna tikladik
         driver.findElementByXPath("//android.widget.TextView[@text='Preference']").click();
 
         //preference dependencies butonuna bastik
-        threadSleep(2);
+        threadSleep(3);
         driver.findElementByXPath("//android.widget.TextView[@text='3. Preference dependencies']").click();
 
+        // checkbox control click
+        String isChecked = driver
+                .findElementByAndroidUIAutomator("UiSelector().resourceId(\"android:id/checkbox\").checkable(true)")
+                .getAttribute("checked");
 
-        //check box check et
-        /*
-        Kosul koymazsak tekrar calistirmalarda hata verir ! Appium10 da duzelttik
-         */
-        threadSleep(3);
-        driver.findElementById("android:id/checkbox").click();
+        System.out.println(isChecked + " < =========== > ");
+        if (isChecked.equals("false")) {
 
+            driver.findElementById("android:id/checkbox").click();
+            System.out.println("if < =========== >");
+        }
 
-        //wifi setting tikladik
+        // wifi setting tikladik
         threadSleep(3);
         driver.findElementByXPath("//android.widget.TextView[@text='WiFi settings']").click();
 
-
-        //text penceresi acildigini gorduk
+        // text penceresi acildigini gorduk
         threadSleep(3);
         Assert.assertTrue(driver.findElementById("android:id/alertTitle").isDisplayed());
+        threadSleep(1);
 
-        //text yazdiralim
+        // text yazdiralim
         driver.findElementById("android:id/edit").sendKeys("TextAppium");
+        threadSleep(1);
 
-
-        //ok butonuna bas
+        // ok butonuna bas
         driver.findElementById("android:id/button1").click();
+        threadSleep(1);
 
         System.out.println("mission completed....");
-
         threadSleep(2);
 
-
-        //session kapat
+        // session kapat
         driver.closeApp();
     }
 }
