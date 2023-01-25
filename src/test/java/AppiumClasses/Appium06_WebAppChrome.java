@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Set;
 
-public class Appium06WebAppChrome {
+public class Appium06_WebAppChrome {
 
 
     @Test

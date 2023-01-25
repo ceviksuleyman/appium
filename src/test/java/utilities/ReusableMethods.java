@@ -10,4 +10,6 @@ public class ReusableMethods {
             e.printStackTrace();
         }
     }
+
+     // desiredCapabilities.setCapability("disableAndroidWatchers", true);
 }

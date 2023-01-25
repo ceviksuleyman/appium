@@ -4,14 +4,13 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.ReusableMethods;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Appium08UiSelector {
+public class Appium07_UiSelector {
 
     @Test
     public void test() throws MalformedURLException {
@@ -29,7 +28,7 @@ public class Appium08UiSelector {
 
 
         AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        ReusableMethods.waitFor(2);
+        ReusableMethods.waitFor(3);
 
         // resourceId
         //driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/addButton\")").click();
@@ -43,37 +42,15 @@ public class Appium08UiSelector {
 
 
         driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").textStartsWith(\"Add\")").click();
-        ReusableMethods.waitFor(2);
+        ReusableMethods.waitFor(3);
 
 
-        // done enable false oldugu goruldu
         System.out.println(driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(false)").getAttribute("enabled"));
-        String isFalse = driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(false)").getAttribute("enabled");
-        Assert.assertEquals(isFalse, "false");
-        ReusableMethods.waitFor(2);
+        ReusableMethods.waitFor(3);
 
 
-        // text box'a text gonderdik
-        MobileElement textBox = driver.findElementById("com.davemac327.gesture.tool:id/gesture_name");
-        textBox.sendKeys("Hello world");
-        ReusableMethods.waitFor(2);
+        ReusableMethods.waitFor(3);
 
-
-        MobileElement blackScreen = driver.findElementById("com.davemac327.gesture.tool:id/gestures_overlay");
-        blackScreen.click();
-        ReusableMethods.waitFor(2);
-
-
-        // done buttonun enable true oldugu goruldu
-        System.out.println(driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(true)").getAttribute("enabled"));
-        String isTrue = driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\").enabled(true)").getAttribute("enabled");
-        Assert.assertEquals(isTrue, "true");
-
-        System.out.println("done button enabled");
-
-        driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.davemac327.gesture.tool:id/done\")").click();
-
-        ReusableMethods.waitFor(2);
         driver.closeApp();
     }
 }

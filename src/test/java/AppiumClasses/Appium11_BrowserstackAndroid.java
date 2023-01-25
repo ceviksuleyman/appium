@@ -21,8 +21,8 @@ public class Appium11_BrowserstackAndroid {
         DesiredCapabilities caps = new DesiredCapabilities();
 
         // Set your access credentials
-        caps.setCapability("browserstack.user", "mehmetayyildiz_HFVDMX");
-        caps.setCapability("browserstack.key", "fwuU7xxcgZRSwegDPgvh");
+        caps.setCapability("browserstack.user", "cevik_mBUgLl");
+        caps.setCapability("browserstack.key", "xRCXwV5yR7yuWr2XgwX9");
 
 
         // Set URL of the application under test

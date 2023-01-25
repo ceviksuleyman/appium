@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-public class Appium05NativeChrome {
+public class Appium05_NativeChrome {
 
 
     /*
