@@ -31,11 +31,11 @@ public class Appium13_BrowserstackCalculator {
 
         // Set other BrowserStack capabilities
         caps.setCapability("project", "Calculator");
-        caps.setCapability("build", "browserstack-build-Calculator");
+        caps.setCapability("build", "browserstack-Calculator");
         caps.setCapability("name", "Calculator");
 
 
-        // Initialise the remote Webdriver using BrowserStack remote URL
+        // Initialise the remote WebDriver using BrowserStack remote URL
         // and desired capabilities defined above
         AndroidDriver<AndroidElement> driver = new AndroidDriver<AndroidElement>(
                 new URL("http://hub.browserstack.com/wd/hub"), caps);
@@ -57,7 +57,6 @@ public class Appium13_BrowserstackCalculator {
         num8.click();
 
         ReusableMethods.waitFor(3);
-
         MobileElement preResult = driver.findElementById("com.google.android.calculator:id/result_preview");
         System.out.println("preResult = " + preResult.getText());
 
@@ -66,7 +65,7 @@ public class Appium13_BrowserstackCalculator {
 
         ReusableMethods.waitFor(3);
         MobileElement result = driver.findElementById("com.google.android.calculator:id/result_final");
-        System.out.println("final result = " + result.getText());  //StaleElementReferenceException
+        System.out.println("final result = " + result.getText());  // StaleElementReferenceException
         String preResultText = result.getText();
 
 
